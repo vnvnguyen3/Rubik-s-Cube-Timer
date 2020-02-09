@@ -40,14 +40,12 @@ public class CubeFrame extends JFrame implements KeyListener{
 	JButton reset = new JButton("RESET");
 	JButton enter = new JButton("ENTER TIME");
 	
-	int solves;
 	Font font;
 	/*
 	 * CubeFrame constructor
 	 * Create the user interface
 	 */
 	public CubeFrame(int solves, String cube) {
-		this.solves = solves;
 		font = new Font("Helvetica", Font.BOLD,25);
 		scrambler = new Scrambler(solves, cube);
 		setBounds(350,200,800,600);
@@ -170,7 +168,7 @@ public class CubeFrame extends JFrame implements KeyListener{
 		if(!scrambler.finished()) {
 			scramble.setText(scrambler.scramble());
 		}else{
-			scramble.setText("Your Average of " + solves + " is " + scrambler.getAverage() + ".");
+			scramble.setText("Your Average is " + scrambler.getAverage() + ".");
 			solve.setEditable(false);
 			enter.setVisible(false);
 		}
