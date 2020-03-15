@@ -32,6 +32,12 @@ public class Scrambler{
 		else if(cube.equals("2x2")){
 			return twoScramble();
 		}
+		else if(cube.equals("Skewb")) {
+			return skewbScramble();
+		}
+		else if(cube.equals("Pyraminx")) {
+			return pyraminxScramble();
+		}
 		else {
 			return "No Scramble";
 		}
@@ -43,7 +49,7 @@ public class Scrambler{
 	 */
 	public String threeScramble() {
 		String scramble = "";
-		char[] moves = {'U','D','F','B','L','R'};
+		char[] moves = {'U', 'D', 'F', 'B', 'L', 'R'};
 		int prev = 6;
 		int last = 6;
 		for(int i = 0; i < 21; i++) {
@@ -79,7 +85,7 @@ public class Scrambler{
 	 */
 	public String twoScramble() {
 		String scramble = "";
-		char[] moves = {'U','F','R'};
+		char[] moves = {'U', 'F', 'R'};
 		int prev = 3;
 		for(int i = 0; i < 9; i++) {
 			int move = rand.nextInt(3);
@@ -96,6 +102,82 @@ public class Scrambler{
 				scramble += "'";
 			}
 			scramble += " ";
+		}
+		return "Solve "+ (current+1) + ": " +scramble;
+	}
+	
+	/*
+	 * skewbScramble method
+	 * Generates a scramble for Skewb solves
+	 */
+	public String skewbScramble() {
+		String scramble = "";
+		char[] moves = {'U', 'B', 'R', 'L'};
+		int prev = 4;
+		for(int i = 0; i < 8; i++) {
+			int move = rand.nextInt(4);
+			while(move == prev) {
+				move = rand.nextInt(4);
+			}
+			prev = move;
+			scramble += moves[move];
+			int direction = rand.nextInt(2);
+			if (direction == 1) {
+				scramble += "'";
+			}
+			scramble += " ";
+		}
+		return "Solve "+ (current+1) + ": " +scramble;
+	}
+	
+	/*
+	 * pyraminxScramble method
+	 * Generates a scramble for Pyraminx solves
+	 */
+	public String pyraminxScramble() {
+		String scramble = "";
+		char[] moves = {'U', 'B', 'R', 'L'};
+		int prev = 4;
+		for(int i = 0; i < 9; i++) {
+			int move = rand.nextInt(4);
+			while(move == prev) {
+				move = rand.nextInt(4);
+			}
+			prev = move;
+			scramble += moves[move];
+			int direction = rand.nextInt(2);
+			if (direction == 1) {
+				scramble += "'";
+			}
+			scramble += " ";
+		}
+		int uTip = rand.nextInt(3);
+		if(uTip == 1) {
+			scramble += "u ";
+		}
+		else if(uTip == 2) {
+			scramble += "u' ";
+		}
+		int lTip = rand.nextInt(3);
+		if(lTip == 1) {
+			scramble += "l ";
+		}
+		else if(lTip == 2) {
+			scramble += "l' ";
+		}
+		int rTip = rand.nextInt(3);
+		if(rTip == 1) {
+			scramble += "r ";
+		}
+		else if(rTip == 2) {
+			scramble += "r' ";
+		}
+		int bTip = rand.nextInt(3);
+		if(bTip == 1) {
+			scramble += "b ";
+		}
+		else if(bTip == 2) {
+			scramble += "b' ";
 		}
 		return "Solve "+ (current+1) + ": " +scramble;
 	}
