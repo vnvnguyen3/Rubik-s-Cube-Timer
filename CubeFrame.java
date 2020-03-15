@@ -79,15 +79,20 @@ public class CubeFrame extends JFrame implements KeyListener{
 				String[] mods = {"+2", "DELETE"};
 		        int mod = JOptionPane.showOptionDialog(null, null, "How would you like to modify your time?", JOptionPane.NO_OPTION,
 		                JOptionPane.QUESTION_MESSAGE, null,mods,mods);
-		        if(mod==0) {
+		        if(mod == 0) {
 		        	if(scrambler.plus2()) {
 		        		solveList.setText("");
 		        		for(String s: scrambler.getTimes()) {
 							solveList.append(s+"\n\r");
 						}
+		        		if(scrambler.finished()) {
+		        			scramble.setText("Your Average is " + scrambler.getAverage() + ".");
+		        			solve.setEditable(false);
+		        			enter.setVisible(false);
+		        		}
 		        	}
 		        }
-		        else {
+		        else if(mod == 1){
 		        	if(scrambler.delete()) {
 						solve.setText("DELETED");
 						solveList.setText("");
@@ -105,7 +110,7 @@ public class CubeFrame extends JFrame implements KeyListener{
 			public void actionPerformed(ActionEvent e) {
 				int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to reset?");
 				if(confirm == 0) {
-					String[] cubes = {"3x3", "2x2"};
+					String[] cubes = {"3x3", "2x2",  "Skewb", "Pyraminx"};
 			        int cube = JOptionPane.showOptionDialog(null, null, "Which cube are you using?", JOptionPane.NO_OPTION,
 			                JOptionPane.QUESTION_MESSAGE, null,cubes,cubes[0]);
 					String number = JOptionPane.showInputDialog("How many solves are you going to do today?","5");
