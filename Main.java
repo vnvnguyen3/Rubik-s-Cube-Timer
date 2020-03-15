@@ -7,7 +7,7 @@ public class Main{
 	 * Then creates a cubeFrame using the information you entered.
 	 */
 	public static void main(String[] args) {
-		String[] cubes = {"3x3", "2x2"};
+		String[] cubes = {"3x3", "2x2", "Skewb", "Pyraminx"};
         int cube = JOptionPane.showOptionDialog(null, null, "Which cube are you using?", JOptionPane.NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE, null,cubes,cubes[0]);
 		String solves = JOptionPane.showInputDialog("How many solves are you going to do today?","5");
